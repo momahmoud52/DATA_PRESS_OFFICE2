@@ -1,17 +1,26 @@
+<!-- file: dashboard.html -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>لوحة البيانات</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="container dashboard">
-    <h2>بيانات المستخدم</h2>
-    <div id="dashboard"></div>
-    <button id="logoutBtn">تسجيل الخروج</button>
-  </div>
+  <main class="page">
+    <header class="container header">
+      <h1 class="title">بيانات المستخدم</h1>
+      <div class="header-actions">
+        <button id="logoutBtn" class="btn ghost">تسجيل الخروج</button>
+      </div>
+    </header>
 
-  <script src="js/app.js"></script>
+    <section class="container table-wrap">
+      <div id="dashboard" class="dashboard"></div>
+    </section>
+  </main>
+
+  <script src="js/app.js" defer></script>
 </body>
 </html>

@@ -1,20 +1,40 @@
+<!-- file: index.html -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>تسجيل الدخول</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="container login">
-    <h2>تسجيل الدخول</h2>
-    <input type="text" id="nameInput" placeholder="الاسم (عربي أو إنجليزي)" />
-    <input type="text" id="nidInput" placeholder="الرقم القومي" />
-    <button id="loginBtn">دخول</button>
-    <p id="errorMsg" class="error"></p>
-  </div>
 
-  <!-- ❌ لا نحتاج Tabletop.js -->
-  <script src="js/app.js"></script>
+<!-- HTML: ضع هذا داخل <body> أعلى المحتوى في index.html و dashboard.html -->
+<div id="loader" aria-hidden="false">
+  <div class="loader-circle" role="status" aria-label="جارٍ التحميل">
+    <img src="Copy of Gold Luxury Initial Circle Logo (1000 × 1000 px)_20240131_175848_0000 (1).png" alt="Logo">
+  </div>
+</div>
+  <main class="page">
+    <section class="container login">
+      <h1 class="title">تسجيل الدخول</h1>
+
+      <form id="loginForm" novalidate>
+        <label for="nameInput" class="label">الاسم</label>
+        <input id="nameInput" name="name" type="text" inputmode="text"
+               placeholder="الاسم (عربي أو إنجليزي)" required maxlength="80" />
+
+        <label for="nidInput" class="label">الرقم الكودي</label>
+        <input id="nidInput" name="nid" type="text" inputmode="numeric"
+               placeholder="الرقم الكودي" required maxlength="14" />
+
+        <p id="errorMsg" role="alert" class="error" aria-live="polite"></p>
+
+        <button type="submit" id="loginBtn" class="btn">دخول</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/app.js" defer></script>
 </body>
 </html>
