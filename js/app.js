@@ -114,48 +114,6 @@ const App = (function () {
   /* renderTable: تحويل كائن المستخدم إلى جدول HTML */
   function renderTable(user, container) {
     container.innerHTML = "";
-    // ===== صور المستخدم =====
-const photosWrapper = document.createElement("div");
-photosWrapper.className = "user-photos";
-
-if (user["صورة شخصية"]) {
-  const personalBox = document.createElement("div");
-  personalBox.className = "user-photo-box";
-  personalBox.innerHTML = `
-    <h3>الصورة الشخصية</h3>
-    <img src="${sanitize(user["صورة شخصية"])}" alt="الصورة الشخصية">
-  `;
-  photosWrapper.appendChild(personalBox);
-}
-
-if (user["صورة البطاقة"]) {
-  const idBox = document.createElement("div");
-  idBox.className = "user-photo-box";
-  idBox.innerHTML = `
-    <h3>صورة البطاقة</h3>
-    <img src="${sanitize(user["صورة البطاقة"])}" alt="صورة البطاقة">
-  `;
-  photosWrapper.appendChild(idBox);
-}
-
-container.appendChild(photosWrapper);
-// ===== بطاقة PDF =====
-if (user["ملف البطاقة PDF"]) {
-  const pdfBox = document.createElement("div");
-  pdfBox.className = "pdf-box";
-
-  const pdfURL = sanitize(user["ملف البطاقة PDF"]);
-
-  pdfBox.innerHTML = `
-    <h3>ملف البطاقة (PDF)</h3>
-    <iframe class="pdf-frame" src="${pdfURL}"></iframe>
-    <a href="${pdfURL}" target="_blank" class="pdf-download">تحميل ملف PDF</a>
-  `;
-
-  container.appendChild(pdfBox);
-}
-
-
 
     const summary = document.createElement("div");
     summary.className = "user-summary";
@@ -207,19 +165,6 @@ if (user["ملف البطاقة PDF"]) {
       window.location.href = "index.html";
       return;
     }
-/* تحويل رابط Google Drive إلى رابط مباشر PDF */
-function convertDriveToPDF(url) {
-  if (!url) return "";
-
-  // استخراج ID من الرابط
-  const match = url.match(/\/d\/(.*?)\//);
-  if (!match || !match[1]) return url; // إذا ليس رابط Drive، نعيده كما هو
-
-  const fileId = match[1];
-
-  // رابط مباشر PDF
-  return `https://drive.google.com/uc?export=download&id=${fileId}`;
-}
 
     renderTable(user, container);
 
